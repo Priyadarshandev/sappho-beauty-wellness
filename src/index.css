@@ -1,0 +1,72 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@theme {
+  --color-sappho-pink: #FDF2F5;
+  --color-sappho-beige: #F5F2EE;
+  --color-sappho-gold: #C5A059;
+  --color-sappho-gold-light: #D4AF37;
+  --color-sappho-charcoal: #2C2C2C;
+  --color-sappho-rose: #E9D8D2;
+
+  --font-outfit: "Outfit", sans-serif;
+  --font-playfair: "Playfair Display", serif;
+
+  --animate-fade-in: fadeIn 0.5s ease-out forwards;
+  --animate-slide-up: slideUp 0.7s ease-out forwards;
+  --animate-float: float 3s ease-in-out infinite;
+
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @keyframes slideUp {
+    0% { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-outfit);
+  }
+  
+  body {
+    @apply bg-white text-sappho-charcoal antialiased overflow-x-hidden;
+  }
+}
+
+@layer components {
+  .premium-card {
+    @apply bg-white rounded-3xl p-8 shadow-sm border border-[#F5F2EE] transition-all duration-300 hover:shadow-xl hover:translate-y-[-4px];
+  }
+  
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-md rounded-3xl p-8 border border-white/50 shadow-lg;
+  }
+  
+  .section-container {
+    @apply max-w-7xl mx-auto px-6 py-24;
+  }
+  
+  .btn-primary {
+    @apply px-8 py-3 rounded-full bg-sappho-gold text-white font-medium tracking-wide hover:bg-sappho-gold-light transition-all shadow-md active:scale-95;
+  }
+  
+  .btn-secondary {
+    @apply px-8 py-3 rounded-full border border-sappho-gold text-sappho-gold font-medium tracking-wide hover:bg-sappho-pink transition-all active:scale-95;
+  }
+}
+
+.text-gradient {
+  @apply bg-gradient-to-r from-sappho-gold to-[#A08040] bg-clip-text text-transparent;
+}
+
+.bg-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C5A059' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
